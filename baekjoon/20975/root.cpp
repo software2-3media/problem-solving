@@ -1,14 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
-#include <vector>
-#include <stack>
-#include <queue>
-#include <deque>
-#include <map>
-#include <set>
-#include <cstring>
 #include <algorithm>
-#include <math.h>
 
 using namespace std;
 #define fastio ios::sync_with_stdio(0), cin.tie(0), cout.tie(0)
@@ -21,41 +12,46 @@ typedef long double ld;
 
 #define MAX_N 21
 
-int N;
-int cowHeight[MAX_N];
-int stallHeight[MAX_N];
+void solve()
+{
+	int N;
+	int cowHeight[MAX_N];
+	int stallHeight[MAX_N];
 
-void solve() {
-  sort (cowHeight, cowHeight + N);
-  sort (stallHeight, stallHeight + N);
+	cin >> N;
+	for (int i = 0; i < N; i++)
+		cin >> cowHeight[i];
+	for (int i = 0; i < N; i++)
+		cin >> stallHeight[i];
+	
+	sort(cowHeight, cowHeight + N);
+	sort(stallHeight, stallHeight + N);
 
-  int idxStalls = N - 1;
-  int possibleStalls = 0;
-  ll cnt = 1;
+	int idxStalls = N - 1;
+	int possibleStalls = 0;
+	ll cnt = 1;
 
-  for (int i = N - 1; i >= 0; i--) {
-    while (cowHeight[i] <= stallHeight[idxStalls]) {
-      idxStalls--;
-      possibleStalls++;
-    }
-    cnt *= possibleStalls;
-    possibleStalls--;
-  }
+	for (int i = N - 1; i >= 0; i--) {
+		while (cowHeight[i] <= stallHeight[idxStalls]) {
+			idxStalls--;
+			possibleStalls++;
+		}
+		cnt *= possibleStalls;
+		possibleStalls--;
+	}
 
-  cout << cnt;
+	cout << cnt;
 }
 
-void input() {
-  cin >> N;
-  for (int i = 0; i < N; i++) cin >> cowHeight[i];
-  for (int i = 0; i < N; i++) cin >> stallHeight[i];
-}
+int main()
+{
+	fastio;
 
-int main() {
-  fastio;
+	int t = 1;
+	// cin >> t;
+	while (t--) {
+		solve();
+	}
 
-  input();
-  solve();
-
-  return 0;
+	return 0;
 }
