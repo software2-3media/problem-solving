@@ -60,7 +60,7 @@ int main()
 {
 	fastio;
 
-	int t;
+	int t = 1;
 	// cin >> t;
 	while (t--) {
 		solve();
