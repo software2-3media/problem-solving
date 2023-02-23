@@ -35,7 +35,7 @@ int main() {
 				graph[i].push_back(j);
 			}
 		}
-	}
+	} 
 	for (int i = 0; i < n; i++) {
 		resetV();
 		dfs(i);
